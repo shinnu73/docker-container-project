@@ -1,0 +1,11 @@
+FROM centos:latest
+MAINTAINER sanjay.dahiya@gmail.com
+RUN yum install -y httpd \
+  zip \
+ unzip
+ADD https://www.free-css.com/free-css-templates/page288/frica   /var/www/html/
+WORKDIR /var/www/html
+RUN cp -rvf  frica/*
+RUN rm -rf frica
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
